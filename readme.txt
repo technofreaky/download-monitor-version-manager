@@ -12,10 +12,14 @@ Stable tag: 0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html 
 
-A Simple Plugin Boiler Plate for woocommerce 
+A Plugin to manage your software version using Download Monitor
 
 == Description ==
-A Simple Plugin Boiler Plate for woocommerce 
+A Plugin to manage your software version using Download Monitor.
+
+Use `[dlm_latest_version id='22']` to list latest & old version in a prefect way.
+
+Replace 22 with your download post id.
 
 == Screenshots ==
 == Upgrade Notice ==
