@@ -9,7 +9,7 @@
  * @subpackage Download Monitor Latest Version/core
  * @since 1.0
  */
-class Download_Monitor_Latest_Version_Deactivator {
+class Download_Monitor_Version_Manager_Deactivator {
 	/**
 	 * Short Description. (use period)
 	 *
@@ -22,13 +22,13 @@ class Download_Monitor_Latest_Version_Deactivator {
 	}
 
 	public static function dependency_deactivate(){ 
-		if ( is_plugin_active(DLM_LV_FILE) ) {
+		if ( is_plugin_active(DLM_VM_FILE) ) {
 			add_action('update_option_active_plugins', array(__CLASS__,'deactivate_dependent'));
 		}
 	}
 	
 	public static function deactivate_dependent(){
-		deactivate_plugins(DLM_LV_FILE);
+		deactivate_plugins(DLM_VM_FILE);
 	}
 
 }

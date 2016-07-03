@@ -9,7 +9,7 @@
  */
 if ( ! defined( 'WPINC' ) ) { die; }
  
-class Download_Monitor_Latest_Version {
+class Download_Monitor_Version_Manager {
 	public $version = '1.0';
 	public $plugin_vars = array();
 	
@@ -48,7 +48,7 @@ class Download_Monitor_Latest_Version {
 	 * @return void
 	 */
 	public function __clone() {
-		_doing_it_wrong( __FUNCTION__, __( 'Cloning instances of the class is forbidden.', DLM_LV_TXT), DLM_LV_V );
+		_doing_it_wrong( __FUNCTION__, __( 'Cloning instances of the class is forbidden.', DLM_VM_TXT), DLM_VM_V );
 	}	
 
 	/**
@@ -60,17 +60,17 @@ class Download_Monitor_Latest_Version {
 	 * @return void
 	 */
 	public function __wakeup() {
-		_doing_it_wrong( __FUNCTION__, __( 'Unserializing instances of the class is forbidden.',DLM_LV_TXT), DLM_LV_V);
+		_doing_it_wrong( __FUNCTION__, __( 'Unserializing instances of the class is forbidden.',DLM_VM_TXT), DLM_VM_V);
 	}
 
     /**
      * Loads Required Plugins For Plugin
      */
     private function load_required_files(){
-       $this->load_files(DLM_LV_INC.'class-*.php');
+       $this->load_files(DLM_VM_INC.'class-*.php');
 
-       if(dlm_lv_is_request('admin')){
-           $this->load_files(DLM_LV_ADMIN.'class-*.php');
+       if(dlm_vm_is_request('admin')){
+           $this->load_files(DLM_VM_ADMIN.'class-*.php');
        } 
 
     }
@@ -79,10 +79,10 @@ class Download_Monitor_Latest_Version {
      * Inits loaded Class
      */
     private function init_class(){ 
-        self::$functions = new Download_Monitor_Latest_Version_Functions;
-        new Download_Monitor_Latest_Version_Shortcode_Handler;
-        if(dlm_lv_is_request('admin')){
-            self::$admin = new Download_Monitor_Latest_Version_Admin;
+        self::$functions = new Download_Monitor_Version_Manager_Functions;
+        new Download_Monitor_Version_Manager_Shortcode_Handler;
+        if(dlm_vm_is_request('admin')){
+            self::$admin = new Download_Monitor_Version_Manager_Admin;
         } 
     }
     
@@ -116,15 +116,15 @@ class Download_Monitor_Latest_Version {
      * Set Plugin Text Domain
      */
     public function after_plugins_loaded(){
-        load_plugin_textdomain(DLM_LV_TXT, false, DLM_LV_LANGUAGE_PATH );
+        load_plugin_textdomain(DLM_VM_TXT, false, DLM_VM_LANGUAGE_PATH );
     }
     
     /**
      * load translated mo file based on wp settings
      */
     public function load_plugin_mo_files($mofile, $domain) {
-        if (DLM_LV_TXT === $domain)
-            return DLM_LV_LANGUAGE_PATH.'/'.get_locale().'.mo';
+        if (DLM_VM_TXT === $domain)
+            return DLM_VM_LANGUAGE_PATH.'/'.get_locale().'.mo';
 
         return $mofile;
     }
@@ -133,20 +133,20 @@ class Download_Monitor_Latest_Version {
      * Define Required Constant
      */
     private function define_constant(){
-        $this->define('DLM_LV_NAME', 'Download Monitor Latest Version'); # Plugin Name
-        $this->define('DLM_LV_SLUG', 'download-monitor-latest-version'); # Plugin Slug
-        $this->define('DLM_LV_TXT',  'download-monitor-latest-version'); #plugin lang Domain
-		$this->define('DLM_LV_DB', 'dlm_lv_');
-		$this->define('DLM_LV_V',$this->version); # Plugin Version
+        $this->define('DLM_VM_NAME', 'Download Monitor Version Manager'); # Plugin Name
+        $this->define('DLM_VM_SLUG', 'download-monitor-version-manager'); # Plugin Slug
+        $this->define('DLM_VM_TXT',  'download-monitor-version-manager'); #plugin lang Domain
+		$this->define('DLM_VM_DB', 'dlm_vm_');
+		$this->define('DLM_VM_V',$this->version); # Plugin Version
 		
-		$this->define('DLM_LV_LANGUAGE_PATH',DLM_LV_PATH.'languages'); # Plugin Language Folder
-		$this->define('DLM_LV_ADMIN',DLM_LV_INC.'admin/'); # Plugin Admin Folder
-		$this->define('DLM_LV_TEMPLATE',DLM_LV_PATH.'template/');
+		$this->define('DLM_VM_LANGUAGE_PATH',DLM_VM_PATH.'languages'); # Plugin Language Folder
+		$this->define('DLM_VM_ADMIN',DLM_VM_INC.'admin/'); # Plugin Admin Folder
+		$this->define('DLM_VM_TEMPLATE',DLM_VM_PATH.'template/');
         
-		$this->define('DLM_LV_URL',plugins_url('', __FILE__ ).'/');  # Plugin URL
-		$this->define('DLM_LV_CSS',DLM_LV_URL.'includes/css/'); # Plugin CSS URL
-		$this->define('DLM_LV_IMG',DLM_LV_URL.'includes/img/'); # Plugin IMG URL
-		$this->define('DLM_LV_JS',DLM_LV_URL.'includes/js/'); # Plugin JS URL
+		$this->define('DLM_VM_URL',plugins_url('', __FILE__ ).'/');  # Plugin URL
+		$this->define('DLM_VM_CSS',DLM_VM_URL.'includes/css/'); # Plugin CSS URL
+		$this->define('DLM_VM_IMG',DLM_VM_URL.'includes/img/'); # Plugin IMG URL
+		$this->define('DLM_VM_JS',DLM_VM_URL.'includes/js/'); # Plugin JS URL
     }
 	
     /**

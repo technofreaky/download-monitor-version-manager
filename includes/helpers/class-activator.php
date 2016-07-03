@@ -9,7 +9,7 @@
  * @subpackage Download Monitor Latest Version/core
  * @since 1.0
  */
-class Download_Monitor_Latest_Version_Activator {
+class Download_Monitor_Version_Manager_Activator {
 	
     public function __construct() {
     }
@@ -22,14 +22,14 @@ class Download_Monitor_Latest_Version_Activator {
 	 * @since    1.0.0
 	 */
 	public static function activate() {
-		require_once(DLM_LV_INC.'helpers/class-version-check.php');
-		require_once(DLM_LV_INC.'helpers/class-dependencies.php');
+		require_once(DLM_VM_INC.'helpers/class-version-check.php');
+		require_once(DLM_VM_INC.'helpers/class-dependencies.php');
 		
-		if(Download_Monitor_Latest_Version_Dependencies(DLM_LV_DEPEN)){
-			Download_Monitor_Latest_Version_Version_Check::activation_check('3.7');	
+		if(Download_Monitor_Version_Manager_Dependencies(DLM_VM_DEPEN)){
+			Download_Monitor_Version_Manager_Version_Check::activation_check('3.7');	
 		} else {
-			if ( is_plugin_active(DLM_LV_FILE) ) { deactivate_plugins(DLM_LV_FILE);} 
-			wp_die(dlm_lv_dependency_message());
+			if ( is_plugin_active(DLM_VM_FILE) ) { deactivate_plugins(DLM_VM_FILE);} 
+			wp_die(dlm_vm_dependency_message());
 		}
 	} 
  

@@ -8,7 +8,7 @@
  */
 if ( ! defined( 'WPINC' ) ) { die; }
 
-class Download_Monitor_Latest_Version_Admin_Handler {
+class Download_Monitor_Version_Manager_Admin_Handler {
     
     public function __construct() {
         add_action('dlm_options_start',array($this,'add_latest_version_field'));
@@ -19,27 +19,27 @@ class Download_Monitor_Latest_Version_Admin_Handler {
     public function add_settings($settings){
         $dlmlvs = array(
             array(
-                'name'        => DLM_LV_DB.'latest_version_heading',
+                'name'        => DLM_VM_DB.'latest_version_heading',
                 'std'         => 'Latest Version',
-                'placeholder' => __( 'Latest Version : ', DLM_LV_TXT),
-                'label'       => __( 'Latest Version Heading : ', DLM_LV_TXT),
-                //'desc'        => sprintf( __( 'Define what endpoint should be used for download links. By default this will be <code>%s</code>.', 'download-monitor' ), home_url( '/download/' ) )
+                'placeholder' => __( 'Latest Version : ', DLM_VM_TXT),
+                'label'       => __( 'Latest Version Heading : ', DLM_VM_TXT),
+                'desc'        => ''
             ),
             
             array(
-                'name'        => DLM_LV_DB.'old_version_heading',
+                'name'        => DLM_VM_DB.'old_version_heading',
                 'std'         => 'Old Version',
-                'placeholder' => __( 'Old Version : ', DLM_LV_TXT),
-                'label'       => __( 'Old Version Heading : ', DLM_LV_TXT),
-               //'desc'        => sprintf( __( 'Define what endpoint should be used for download links. By default this will be <code>%s</code>.', 'download-monitor' ), home_url( '/download/' ) )
+                'placeholder' => __( 'Old Version : ', DLM_VM_TXT),
+                'label'       => __( 'Old Version Heading : ', DLM_VM_TXT),
+                'desc'        => ''
             ),
             
             array(
-                'name'        => DLM_LV_DB.'latest_version_file_title',
-                'std'         => 'Latest Vers',
-                'placeholder' => __( '{version}', DLM_LV_TXT),
-                'label'       => __( 'Latest Version File Display Name : ', DLM_LV_TXT),
-                'desc'        => __( 'Use Below Codes for customize the display name ', DLM_LV_TXT ).
+                'name'        => DLM_VM_DB.'latest_version_file_title',
+                'std'         => '{file_name}',
+                'placeholder' => __( '{version}', DLM_VM_TXT),
+                'label'       => __( 'Latest Version File Display Name : ', DLM_VM_TXT),
+                'desc'        => __( 'Use Below Codes for customize the display name ', DLM_VM_TXT ).
                 '<br/>
                 <code>{download_count}</code> : For file download count <br/>
                 <code>{date}</code> : For file date <br/>
@@ -51,11 +51,11 @@ class Download_Monitor_Latest_Version_Admin_Handler {
             ),
             
             array(
-                'name'        => DLM_LV_DB.'old_version_file_title',
-                'std'         => 'Old Vers',
-                'placeholder' => __( '{version}', DLM_LV_TXT),
-                'label'       => __( 'Old Version File Display Name : ', DLM_LV_TXT),
-                'desc'        => __( 'Use Below Codes for customize the display name ', DLM_LV_TXT ).
+                'name'        => DLM_VM_DB.'old_version_file_title',
+                'std'         => '{file_name} - {version}',
+                'placeholder' => __( '{version}', DLM_VM_TXT),
+                'label'       => __( 'Old Version File Display Name : ', DLM_VM_TXT),
+                'desc'        => __( 'Use Below Codes for customize the display name ', DLM_VM_TXT ).
                 '<br/>
                 <code>{download_count}</code> : For file download count <br/>
                 <code>{date}</code> : For file date <br/>
@@ -66,7 +66,7 @@ class Download_Monitor_Latest_Version_Admin_Handler {
                 <code>{title}</code> For title number <br/> ',
             ),
         );
-        $settings['latestVersion'] = array(__('Latest Version',DLM_LV_TXT),$dlmlvs);
+        $settings['latestVersion'] = array(__('Latest Version',DLM_VM_TXT),$dlmlvs);
         return $settings; 
     }
     
@@ -77,13 +77,13 @@ class Download_Monitor_Latest_Version_Admin_Handler {
         $auto = get_post_meta($postID,'_dlm_latest_version_auto',true);
         
         echo '<p class="form-field form-field-checkbox">';
-        echo '<label for="_dlm_latest_version">' . __( 'Latest Version : ', DLM_LV_TXT ) . '</label>';
+        echo '<label for="_dlm_latest_version">' . __( 'Latest Version : ', DLM_VM_TXT ) . '</label>';
         echo '<select id="_dlm_latest_version" name="dlm_latest_version" style="width:50%; "> '.$versions.' </select>';
         
         if(!empty($auto)){
             $vid = $this->get_single_version($auto);
             echo '<span class="dlm-description">';
-            echo __( 'Auto Selected : ', DLM_LV_TXT );
+            echo __( 'Auto Selected : ', DLM_VM_TXT );
             echo '<strong>  #'.$auto.' - '.$vid.' </strong> </span>';    
         }
         
@@ -114,7 +114,7 @@ class Download_Monitor_Latest_Version_Admin_Handler {
         
         $mattr = '';
         if($selected_latest_version == 'auto'){$mattr = 'selected';}
-        $return = '<option value="auto" '.$mattr.'>'.__('Auto Select',DLM_LV_TXT).'</option> ';
+        $return = '<option value="auto" '.$mattr.'>'.__('Auto Select',DLM_VM_TXT).'</option> ';
         
         foreach($versions as $vpid => $vid){
             $attr = '';

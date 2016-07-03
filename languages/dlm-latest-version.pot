@@ -1,0 +1,135 @@
+# Copyright (C) 2016 Download Monitor Latest Version
+# This file is distributed under the same license as the Download Monitor Latest Version package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Download Monitor Latest Version 1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/dlm-latest-version\n"
+"POT-Creation-Date: 2016-07-03 12:55:29+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: bootstrap.php:51
+msgid "Cloning instances of the class is forbidden."
+msgstr ""
+
+#: bootstrap.php:63
+msgid "Unserializing instances of the class is forbidden."
+msgstr ""
+
+#: includes/admin/class-admin-handler.php:24
+#: includes/admin/class-admin-handler.php:80
+#: includes/class-shortcode-handler.php:34
+msgid "Latest Version : "
+msgstr ""
+
+#: includes/admin/class-admin-handler.php:25
+msgid "Latest Version Heading : "
+msgstr ""
+
+#: includes/admin/class-admin-handler.php:32
+msgid "Old Version : "
+msgstr ""
+
+#: includes/admin/class-admin-handler.php:33
+msgid "Old Version Heading : "
+msgstr ""
+
+#: includes/admin/class-admin-handler.php:40
+#: includes/admin/class-admin-handler.php:56
+msgid "{version}"
+msgstr ""
+
+#: includes/admin/class-admin-handler.php:41
+msgid "Latest Version File Display Name : "
+msgstr ""
+
+#: includes/admin/class-admin-handler.php:42
+#: includes/admin/class-admin-handler.php:58
+msgid "Use Below Codes for customize the display name "
+msgstr ""
+
+#: includes/admin/class-admin-handler.php:57
+msgid "Old Version File Display Name : "
+msgstr ""
+
+#: includes/admin/class-admin-handler.php:69
+msgid "Latest Version"
+msgstr ""
+
+#: includes/admin/class-admin-handler.php:86
+msgid "Auto Selected : "
+msgstr ""
+
+#: includes/admin/class-admin-handler.php:117
+msgid "Auto Select"
+msgstr ""
+
+#: includes/admin/class-admin-init.php:62
+msgid "Settings"
+msgstr ""
+
+#: includes/admin/class-admin-init.php:63
+msgid "Contact Author"
+msgstr ""
+
+#: includes/admin/class-admin-init.php:77
+msgid "F.A.Q"
+msgstr ""
+
+#: includes/admin/class-admin-init.php:78
+msgid "View On Github"
+msgstr ""
+
+#: includes/admin/class-admin-init.php:79
+msgid "Report Issue"
+msgstr ""
+
+#: includes/admin/class-admin-init.php:80
+msgid "Donate"
+msgstr ""
+
+#: includes/class-shortcode-handler.php:37
+msgid "Old Versions : "
+msgstr ""
+
+#: includes/class-shortcode-handler.php:93
+msgid "Download not found"
+msgstr ""
+
+#: includes/functions.php:157
+msgid "General"
+msgstr ""
+
+#: includes/functions.php:160 includes/functions.php:172
+msgid "Save Changes"
+msgstr ""
+
+#: template/content-latest-version-download.php:23
+#: template/content-latest-version-download.php:42
+msgid "Downloaded 1 time"
+msgid_plural "Downloaded %d times"
+msgstr[0] ""
+msgstr[1] ""
+#. Plugin Name of the plugin/theme
+msgid "Download Monitor Latest Version"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://google.com"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Sample Plugin For WooCommerce"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Varun Sridharan"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://varunsridharan.in"
+msgstr ""

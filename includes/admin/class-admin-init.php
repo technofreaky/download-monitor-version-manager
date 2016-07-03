@@ -9,7 +9,7 @@
  */
 if ( ! defined( 'WPINC' ) ) { die; }
 
-class Download_Monitor_Latest_Version_Admin {
+class Download_Monitor_Version_Manager_Admin {
 
     /**
 	 * Initialize the class and set its properties.
@@ -21,13 +21,13 @@ class Download_Monitor_Latest_Version_Admin {
         add_action( 'admin_init', array( $this, 'admin_init' ));
 
         add_filter( 'plugin_row_meta', array($this, 'plugin_row_links' ), 10, 2 );
-        add_filter( 'plugin_action_links_'.DLM_LV_FILE, array($this,'plugin_action_links'),10,10);
+        add_filter( 'plugin_action_links_'.DLM_VM_FILE, array($this,'plugin_action_links'),10,10);
 	} 
     /**
      * Inits Admin Sttings
      */
     public function admin_init(){
-        new Download_Monitor_Latest_Version_Admin_Handler;
+        new Download_Monitor_Version_Manager_Admin_Handler;
     }
  
      
@@ -36,8 +36,8 @@ class Download_Monitor_Latest_Version_Admin {
 	 * Register the stylesheets for the admin area.
 	 */
 	public function enqueue_styles() { 
-        wp_register_style(DLM_LV_SLUG.'_backend_style',DLM_LV_CSS.'backend.css' , array(), DLM_LV_V, 'all' );  
-        wp_enqueue_style(DLM_LV_SLUG.'_backend_style');  
+        wp_register_style(DLM_VM_SLUG.'_backend_style',DLM_VM_CSS.'backend.css' , array(), DLM_VM_V, 'all' );  
+        wp_enqueue_style(DLM_VM_SLUG.'_backend_style');  
 	}
 	
     
@@ -45,8 +45,8 @@ class Download_Monitor_Latest_Version_Admin {
 	 * Register the JavaScript for the admin area.
 	 */
 	public function enqueue_scripts() {
-        wp_register_script(DLM_LV_SLUG.'_backend_script', DLM_LV_JS.'backend.js', array('jquery'), DLM_LV_V, false ); 
-        wp_enqueue_script(DLM_LV_SLUG.'_backend_script' ); 
+        wp_register_script(DLM_VM_SLUG.'_backend_script', DLM_VM_JS.'backend.js', array('jquery'), DLM_VM_V, false ); 
+        wp_enqueue_script(DLM_VM_SLUG.'_backend_script' ); 
 	}
      
  
@@ -59,8 +59,8 @@ class Download_Monitor_Latest_Version_Admin {
 	 */
     public function plugin_action_links($action,$file,$plugin_meta,$status){
         $url = admin_url('edit.php?post_type=dlm_download&page=download-monitor-settings#settings-latestversion');
-        $actions[] = sprintf('<a href="%s">%s</a>', $url, __('Settings',DLM_LV_TXT) );
-        $actions[] = sprintf('<a href="%s">%s</a>', 'http://varunsridharan.in/plugin-support/', __('Contact Author',DLM_LV_TXT) );
+        $actions[] = sprintf('<a href="%s">%s</a>', $url, __('Settings',DLM_VM_TXT) );
+        $actions[] = sprintf('<a href="%s">%s</a>', 'http://varunsridharan.in/plugin-support/', __('Contact Author',DLM_VM_TXT) );
         $action = array_merge($actions,$action);
         return $action;
     }
@@ -73,11 +73,11 @@ class Download_Monitor_Latest_Version_Admin {
 	 * @return array
 	 */
 	public function plugin_row_links( $plugin_meta, $plugin_file ) {
-		if ( DLM_LV_FILE == $plugin_file ) {
-            $plugin_meta[] = sprintf('<a href="%s">%s</a>', '#', __('F.A.Q',DLM_LV_TXT) );
-            $plugin_meta[] = sprintf('<a href="%s">%s</a>', '#', __('View On Github',DLM_LV_TXT) );
-            $plugin_meta[] = sprintf('<a href="%s">%s</a>', '#', __('Report Issue',DLM_LV_TXT) );
-            $plugin_meta[] = sprintf('&hearts; <a href="%s">%s</a>', '#', __('Donate',DLM_LV_TXT) );
+		if ( DLM_VM_FILE == $plugin_file ) {
+            $plugin_meta[] = sprintf('<a href="%s">%s</a>', '#', __('F.A.Q',DLM_VM_TXT) );
+            $plugin_meta[] = sprintf('<a href="%s">%s</a>', '#', __('View On Github',DLM_VM_TXT) );
+            $plugin_meta[] = sprintf('<a href="%s">%s</a>', '#', __('Report Issue',DLM_VM_TXT) );
+            $plugin_meta[] = sprintf('&hearts; <a href="%s">%s</a>', '#', __('Donate',DLM_VM_TXT) );
 		}
 		return $plugin_meta;
 	}	    

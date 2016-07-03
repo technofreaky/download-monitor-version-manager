@@ -11,7 +11,7 @@
  */
 if ( ! defined( 'WPINC' ) ) { die; }
 
-class Download_Monitor_Latest_Version_Functions {
+class Download_Monitor_Version_Manager_Functions {
 
 	/**
 	 * Define the core functionality of the plugin.
@@ -34,7 +34,7 @@ class Download_Monitor_Latest_Version_Functions {
 	 * @since    1.0.0
 	 */
 	public function enqueue_styles() { 
-		wp_enqueue_style(DLM_LV_NAME.'frontend_style', DLM_LV_CSS. 'frontend.css', array(), DLM_LV_V, 'all' );
+		wp_enqueue_style(DLM_VM_NAME.'frontend_style', DLM_VM_CSS. 'frontend.css', array(), DLM_VM_V, 'all' );
 	}
     
 	/**
@@ -43,7 +43,7 @@ class Download_Monitor_Latest_Version_Functions {
 	 * @since    1.0.0
 	 */
 	public function enqueue_scripts() { 
-		wp_enqueue_script(DLM_LV_NAME.'frontend_script', DLM_LV_JS.'frontend.js', array( 'jquery' ), DLM_LV_V, false );
+		wp_enqueue_script(DLM_VM_NAME.'frontend_script', DLM_VM_JS.'frontend.js', array( 'jquery' ), DLM_VM_V, false );
 	}
 
 }

@@ -7,7 +7,7 @@
  * @subpackage Download Monitor Latest Version/core
  * @since 1.0
  */
-class Download_Monitor_Latest_Version_Version_Check {
+class Download_Monitor_Version_Manager_Version_Check {
     static $version;
     /**
      * The primary sanity check, automatically disable the plugin on activation if it doesn't meet minimum requirements
@@ -17,8 +17,8 @@ class Download_Monitor_Latest_Version_Version_Check {
     public static function activation_check( $version ) {
         self::$version = $version;
         if ( ! self::compatible_version() ) {
-            deactivate_plugins(DLM_LV_FILE);
-            wp_die( __( DLM_LV_NAME . ' requires WordPress ' . self::$version . ' or higher!', DLM_LV_TXT ) );
+            deactivate_plugins(DLM_VM_FILE);
+            wp_die( __( DLM_VM_NAME . ' requires WordPress ' . self::$version . ' or higher!', DLM_VM_TXT ) );
         } 
     }
 	
@@ -29,8 +29,8 @@ class Download_Monitor_Latest_Version_Version_Check {
      */
     public function check_version() {
         if ( ! self::compatible_version() ) {
-            if ( is_plugin_active(DLM_LV_FILE) ) {
-                deactivate_plugins(DLM_LV_FILE);
+            if ( is_plugin_active(DLM_VM_FILE) ) {
+                deactivate_plugins(DLM_VM_FILE);
                 add_action( 'admin_notices', array( $this, 'disabled_notice' ) );
                 if ( isset( $_GET['activate'] ) ) {
                     unset( $_GET['activate'] );
@@ -45,7 +45,7 @@ class Download_Monitor_Latest_Version_Version_Check {
      * @since  1.0.0
      */
     public function disabled_notice() {
-       echo '<strong>' . esc_html__( DLM_LV_NAME . ' requires WordPress ' . self::$version . ' or higher!', DLM_LV_TXT ) . '</strong>';
+       echo '<strong>' . esc_html__( DLM_VM_NAME . ' requires WordPress ' . self::$version . ' or higher!', DLM_VM_TXT ) . '</strong>';
     } 
 	
     /**

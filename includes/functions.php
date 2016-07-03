@@ -10,30 +10,30 @@
 if ( ! defined( 'WPINC' ) ) { die; }
 
 
-global $dlm_lv_db_settins_values;
-$dlm_lv_db_settins_values = array();
-add_action('dlm_lv_loaded','dlm_lv_get_settings_from_db',1);
+global $dlm_vm_db_settins_values;
+$dlm_vm_db_settins_values = array();
+add_action('dlm_vm_loaded','dlm_vm_get_settings_from_db',1);
 
-if(!function_exists('dlm_lv_option')){
-	function dlm_lv_option($key = ''){
-		global $dlm_lv_db_settins_values;
-		if($key == ''){return $dlm_lv_db_settins_values;}
-		if(isset($dlm_lv_db_settins_values[WC_BOF_DB.$key])){
-			return $dlm_lv_db_settins_values[WC_BOF_DB.$key];
+if(!function_exists('dlm_vm_option')){
+	function dlm_vm_option($key = ''){
+		global $dlm_vm_db_settins_values;
+		if($key == ''){return $dlm_vm_db_settins_values;}
+		if(isset($dlm_vm_db_settins_values[WC_BOF_DB.$key])){
+			return $dlm_vm_db_settins_values[WC_BOF_DB.$key];
 		} 
 		
 		return false;
 	}
 }
 
-if(!function_exists('dlm_lv_get_settings_from_db')){
+if(!function_exists('dlm_vm_get_settings_from_db')){
 	/**
 	 * Retrives All Plugin Options From DB
 	 */
-	function dlm_lv_get_settings_from_db(){
-		global $dlm_lv_db_settins_values;
+	function dlm_vm_get_settings_from_db(){
+		global $dlm_vm_db_settins_values;
 		$section = array();
-		$section = apply_filters('dlm_lv_settings_section',$section); 
+		$section = apply_filters('dlm_vm_settings_section',$section); 
 		$values = array();
 		foreach($section as $settings){
 			foreach($settings as $set){
@@ -41,17 +41,17 @@ if(!function_exists('dlm_lv_get_settings_from_db')){
 				if(is_array($db_val)){ unset($db_val['section_id']); $values = array_merge($db_val,$values); }
 			}
 		}        
-		$dlm_lv_db_settins_values = $values;
+		$dlm_vm_db_settins_values = $values;
 	}
 }
 
-if(!function_exists('dlm_lv_is_request')){
+if(!function_exists('dlm_vm_is_request')){
     /**
 	 * What type of request is this?
 	 * string $type ajax, frontend or admin
 	 * @return bool
 	 */
-    function dlm_lv_is_request( $type ) {
+    function dlm_vm_is_request( $type ) {
         switch ( $type ) {
             case 'admin' :
                 return is_admin();
@@ -65,44 +65,44 @@ if(!function_exists('dlm_lv_is_request')){
     }
 }
 
-if(!function_exists('dlm_lv_current_screen')){
+if(!function_exists('dlm_vm_current_screen')){
     /**
      * Gets Current Screen ID from wordpress
      * @return string [Current Screen ID]
      */
-    function dlm_lv_current_screen(){
+    function dlm_vm_current_screen(){
        $screen =  get_current_screen();
        return $screen->id;
     }
 }
 
-if(!function_exists('dlm_lv_get_screen_ids')){
+if(!function_exists('dlm_vm_get_screen_ids')){
     /**
      * Returns Predefined Screen IDS
      * @return [Array] 
      */
-    function dlm_lv_get_screen_ids(){
+    function dlm_vm_get_screen_ids(){
         $screen_ids = array();
         $screen_ids[] = 'woocommerce_page_download-monitor-latest-version-settings';
         return $screen_ids;
     }
 }
 
-if(!function_exists('dlm_lv_dependency_message')){
-	function dlm_lv_dependency_message(){
-		$text = __( DLM_LV_NAME . ' requires <b> WooCommerce </b> To Be Installed..  <br/> <i>Plugin Deactivated</i> ', DLM_LV_TXT);
+if(!function_exists('dlm_vm_dependency_message')){
+	function dlm_vm_dependency_message(){
+		$text = __( DLM_VM_NAME . ' requires <b> WooCommerce </b> To Be Installed..  <br/> <i>Plugin Deactivated</i> ', DLM_VM_TXT);
 		return $text;
 	}
 }
 
-if(!function_exists('dlm_lv_get_template')){
-	function dlm_lv_get_template($name,$args = array()){
-		wc_get_template( $name, $args ,'woocommerce/wcbulkorder', DLM_LV_PATH.'/templates/' );
+if(!function_exists('dlm_vm_get_template')){
+	function dlm_vm_get_template($name,$args = array()){
+		wc_get_template( $name, $args ,'woocommerce/wcbulkorder', DLM_VM_PATH.'/templates/' );
 	}
 }
 
-if(!function_exists('dlm_lv_settings_products_json')){
-    function dlm_lv_settings_products_json($ids){
+if(!function_exists('dlm_vm_settings_products_json')){
+    function dlm_vm_settings_products_json($ids){
         $json_ids    = array();
         if(!empty($ids)){
             $ids = explode(',',$ids);
@@ -115,8 +115,8 @@ if(!function_exists('dlm_lv_settings_products_json')){
     }
 }
 
-if(!function_exists('dlm_lv_settings_get_categories')){
-    function dlm_lv_settings_get_categories($tax='product_cat'){
+if(!function_exists('dlm_vm_settings_get_categories')){
+    function dlm_vm_settings_get_categories($tax='product_cat'){
         $args = array();
         $args['hide_empty'] = false;
         $args['number'] = 0; 
@@ -133,8 +133,8 @@ if(!function_exists('dlm_lv_settings_get_categories')){
     }
 }
 
-if(!function_exists('dlm_lv_settings_page_link')){
-    function dlm_lv_settings_page_link($tab = '',$section = ''){
+if(!function_exists('dlm_vm_settings_page_link')){
+    function dlm_vm_settings_page_link($tab = '',$section = ''){
         $settings_url = admin_url('admin.php?page='.WC_BOF_SLUG.'-settings');
         if(!empty($tab)){$settings_url .= '&tab='.$tab;}
         if(!empty($section)){$settings_url .= '#'.$section;}
@@ -142,22 +142,22 @@ if(!function_exists('dlm_lv_settings_page_link')){
     }   
 }
 
-if(!function_exists('dlm_lv_get_settings_sample')){
+if(!function_exists('dlm_vm_get_settings_sample')){
 	/**
 	 * Retunrs the sample array of the settings framework
 	 * @param [string] [$type = 'page' | 'section' | 'field'] [[Description]]
 	 */
-	function dlm_lv_get_settings_sample($type = 'page'){
+	function dlm_vm_get_settings_sample($type = 'page'){
 		$return = array();
 		
 		if($type == 'page'){
 			$return = array( 
 				'id'=>'settings_general', 
 				'slug'=>'general', 
-				'title'=>__('General',DLM_LV_TXT),
+				'title'=>__('General',DLM_VM_TXT),
 				'multiform' => 'false / true',
 				'submit' => array( 
-					'text' => __('Save Changes',DLM_LV_TXT), 
+					'text' => __('Save Changes',DLM_VM_TXT), 
 					'type' => 'primary / secondary / delete', 
 					'name' => 'submit'
 				)
@@ -169,7 +169,7 @@ if(!function_exists('dlm_lv_get_settings_sample')){
 				'title'=>'general', 
 				'desc' => 'general',
 				'submit' => array(
-					'text' => __('Save Changes',DLM_LV_TXT), 
+					'text' => __('Save Changes',DLM_VM_TXT), 
 					'type' => 'primary / secondary / delete', 
 					'name' => 'submit'
 				)
@@ -193,20 +193,20 @@ if(!function_exists('dlm_lv_get_settings_sample')){
 	}
 }
 
-if(!function_exists('dlm_lv_admin_notice')){
-    function dlm_lv_admin_notice($msg , $type = 'updated'){
+if(!function_exists('dlm_vm_admin_notice')){
+    function dlm_vm_admin_notice($msg , $type = 'updated'){
         $notice = ' <div class="'.$type.' settings-error notice is-dismissible" id="setting-error-settings_updated"> 
 <p>'.$msg.'</p><button class="notice-dismiss" type="button"><span class="screen-reader-text">Dismiss this notice.</span></button></div>';
         return $notice;
     }
 }
 
-if(!function_exists('dlm_lv_get_ajax_overlay')){
+if(!function_exists('dlm_vm_get_ajax_overlay')){
 	/**
 	 * Prints WC PBP Ajax Loading Code
 	 */
-	function dlm_lv_get_ajax_overlay($echo = true){
-		$return = '<div class="dlm_lv_ajax_overlay">
+	function dlm_vm_get_ajax_overlay($echo = true){
+		$return = '<div class="dlm_vm_ajax_overlay">
 		<div class="sk-folding-cube">
 		<div class="sk-cube1 sk-cube"></div>
 		<div class="sk-cube2 sk-cube"></div>
@@ -220,8 +220,8 @@ if(!function_exists('dlm_lv_get_ajax_overlay')){
 }
 
 
-if(!function_exists('dlm_lv_get_latest')){
-    function dlm_lv_get_latest($id){
+if(!function_exists('dlm_vm_get_latest')){
+    function dlm_vm_get_latest($id){
         $lv = get_post_meta($id,'_dlm_latest_version',true);
 
         if($lv == ''){return 0;}

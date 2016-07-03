@@ -11,7 +11,7 @@
  */
 if ( ! defined( 'WPINC' ) ) { die; }
 
-class Download_Monitor_Latest_Version_Shortcode_Handler {
+class Download_Monitor_Version_Manager_Shortcode_Handler {
 
 	/**
 	 * Define the core functionality of the plugin.
@@ -30,19 +30,19 @@ class Download_Monitor_Latest_Version_Shortcode_Handler {
     public function get_default_shortcode_atts(){
         $return = array();
         $return['id'] = '';
-        $return['latest_v_text'] = get_option(DLM_LV_DB.'latest_version_heading');
-        if(empty($return['latest_v_text'])){$return['latest_v_text'] == __("Latest Version : ",DLM_LV_TXT); }
+        $return['latest_v_text'] = get_option(DLM_VM_DB.'latest_version_heading');
+        if(empty($return['latest_v_text'])){$return['latest_v_text'] == __("Latest Version : ",DLM_VM_TXT); }
         
-        $return['old_v_text'] = get_option(DLM_LV_DB.'old_version_heading');
-        if(empty($return['old_v_text'])){$return['old_v_text'] == __("Old Versions : ",DLM_LV_TXT); }
+        $return['old_v_text'] = get_option(DLM_VM_DB.'old_version_heading');
+        if(empty($return['old_v_text'])){$return['old_v_text'] == __("Old Versions : ",DLM_VM_TXT); }
         
         return $return;
     }
     
     public function get_download_title($is_latestversion = false){
-        $template = get_option(DLM_LV_DB.'old_version_file_title',true);    
+        $template = get_option(DLM_VM_DB.'old_version_file_title',true);    
         if($is_latestversion){
-            $template = get_option(DLM_LV_DB.'latest_version_file_title',true);    
+            $template = get_option(DLM_VM_DB.'latest_version_file_title',true);    
         }
         
         $version = '';
@@ -78,7 +78,7 @@ class Download_Monitor_Latest_Version_Shortcode_Handler {
             ob_start();
             $template_handler->get_template_part('content-latest-version-download', 
                                                  '', 
-                                                 DLM_LV_TEMPLATE, 
+                                                 DLM_VM_TEMPLATE, 
                                                  array( 
                                                      'scatts' => $atts,
                                                      'handler' => $this,

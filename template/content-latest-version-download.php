@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly
     <div class="dlm_latest_version_listng version_listing dlm_listing">
         <?php
 $versions = $dlm_download->get_file_versions();
-$latestVersion = dlm_lv_get_latest($scatts['id']);
+$latestVersion = dlm_vm_get_latest($scatts['id']);
 $oldversions = array();
 
 if ( $versions ) : 
