@@ -8,7 +8,7 @@
  */
 if ( ! defined( 'WPINC' ) ) { die; }
 
-class Download_Monitor_Version_Manager_Admin_Handler {
+class DLM_Version_Manager_Admin_Handler {
     
     public function __construct() {
         add_action('dlm_options_start',array($this,'add_latest_version_field'));

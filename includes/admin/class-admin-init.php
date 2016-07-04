@@ -9,7 +9,7 @@
  */
 if ( ! defined( 'WPINC' ) ) { die; }
 
-class Download_Monitor_Version_Manager_Admin {
+class DLM_Version_Manager_Admin {
 
     /**
 	 * Initialize the class and set its properties.
@@ -27,7 +27,7 @@ class Download_Monitor_Version_Manager_Admin {
      * Inits Admin Sttings
      */
     public function admin_init(){
-        new Download_Monitor_Version_Manager_Admin_Handler;
+        new DLM_Version_Manager_Admin_Handler;
     }
  
      

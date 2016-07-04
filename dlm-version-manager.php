@@ -43,7 +43,7 @@ register_deactivation_hook( DLM_VM_DEPEN, 'dlm_vm_dependency_deactivate' );
  */
 function dlm_vm_activate_plugin() {
 	require_once(DLM_VM_INC.'helpers/class-activator.php');
-	Download_Monitor_Version_Manager_Activator::activate();
+	DLM_Version_Manager_Activator::activate();
 }
 
 /**
@@ -52,7 +52,7 @@ function dlm_vm_activate_plugin() {
  */
 function dlm_vm_deactivate_plugin() {
 	require_once(DLM_VM_INC.'helpers/class-deactivator.php');
-	Download_Monitor_Version_Manager_Deactivator::deactivate();
+	DLM_Version_Manager_Deactivator::deactivate();
 }
 
 
@@ -62,7 +62,7 @@ function dlm_vm_deactivate_plugin() {
  */
 function dlm_vm_dependency_deactivate() {
 	require_once(DLM_VM_INC.'helpers/class-deactivator.php');
-	Download_Monitor_Version_Manager_Deactivator::dependency_deactivate();
+	DLM_Version_Manager_Deactivator::dependency_deactivate();
 }
 
 
@@ -70,9 +70,9 @@ function dlm_vm_dependency_deactivate() {
 require_once(DLM_VM_INC.'functions.php');
 require_once(plugin_dir_path(__FILE__).'bootstrap.php');
 	
-if(!function_exists('Download_Monitor_Version_Manager')){
-    function Download_Monitor_Version_Manager(){
-        return Download_Monitor_Version_Manager::get_instance();
+if(!function_exists('DLM_Version_Manager')){
+    function DLM_Version_Manager(){
+        return DLM_Version_Manager::get_instance();
     }
 }
-Download_Monitor_Version_Manager();
+DLM_Version_Manager();

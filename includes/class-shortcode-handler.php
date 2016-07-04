@@ -11,7 +11,7 @@
  */
 if ( ! defined( 'WPINC' ) ) { die; }
 
-class Download_Monitor_Version_Manager_Shortcode_Handler {
+class DLM_Version_Manager_Shortcode_Handler {
 
 	/**
 	 * Define the core functionality of the plugin.

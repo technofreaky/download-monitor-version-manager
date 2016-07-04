@@ -9,7 +9,7 @@
  * @subpackage Download Monitor Latest Version/core
  * @since 1.0
  */
-class Download_Monitor_Version_Manager_Deactivator {
+class DLM_Version_Manager_Deactivator {
 	/**
 	 * Short Description. (use period)
 	 *

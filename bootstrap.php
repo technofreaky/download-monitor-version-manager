@@ -9,7 +9,7 @@
  */
 if ( ! defined( 'WPINC' ) ) { die; }
  
-class Download_Monitor_Version_Manager {
+class DLM_Version_Manager {
 	public $version = '1.0';
 	public $plugin_vars = array();
 	
@@ -79,10 +79,10 @@ class Download_Monitor_Version_Manager {
      * Inits loaded Class
      */
     private function init_class(){ 
-        self::$functions = new Download_Monitor_Version_Manager_Functions;
-        new Download_Monitor_Version_Manager_Shortcode_Handler;
+        self::$functions = new DLM_Version_Manager_Functions;
+        new DLM_Version_Manager_Shortcode_Handler;
         if(dlm_vm_is_request('admin')){
-            self::$admin = new Download_Monitor_Version_Manager_Admin;
+            self::$admin = new DLM_Version_Manager_Admin;
         } 
     }
     
@@ -134,8 +134,8 @@ class Download_Monitor_Version_Manager {
      */
     private function define_constant(){
         $this->define('DLM_VM_NAME', 'Download Monitor Version Manager'); # Plugin Name
-        $this->define('DLM_VM_SLUG', 'download-monitor-version-manager'); # Plugin Slug
-        $this->define('DLM_VM_TXT',  'download-monitor-version-manager'); #plugin lang Domain
+        $this->define('DLM_VM_SLUG', 'dlm-version-monitor'); # Plugin Slug
+        $this->define('DLM_VM_TXT',  'dlm-version-monitor'); #plugin lang Domain
 		$this->define('DLM_VM_DB', 'dlm_vm_');
 		$this->define('DLM_VM_V',$this->version); # Plugin Version
 		
