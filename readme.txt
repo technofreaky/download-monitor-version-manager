@@ -1,14 +1,14 @@
-=== Download Monitor Latest Version ===
+=== Download Monitor Version Manager===
 Contributors: varunms
 Author URI: http://varunsridharan.in/
-Plugin URL: https://wordpress.org/plugins/download-monitor-latest-version/
-Tags: WooCommerce
+Plugin URL: https://wordpress.org/plugins/download-monitor-version-manager/
+Tags: Download monitor,dlm,download version,Version manager,dlm version manager,manager,file version,software version
 Donate link: 
 Requires at least: 3.0
 Tested up to: 4.3
 WC requires at least: 1.0
 WC tested up to: 2.4.6
-Stable tag: 0.1
+Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html 
 
